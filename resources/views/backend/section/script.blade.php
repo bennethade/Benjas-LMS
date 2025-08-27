@@ -11,6 +11,9 @@
 	<script src="assets/plugins/chartjs/js/chart.js"></script>
 	<script src="assets/js/index.js"></script>
 
+	{{-- Sweet Alert --}}
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {
@@ -32,6 +35,69 @@
 	<script>
 		new PerfectScrollbar(".app-container")
 	</script>
+
+
+	<!------ PHOTO PREVIEW SCRIPT------->
+	<script>
+		// $(document).ready(function(){
+		// 	$('#photo').change(function(e){
+		// 		var reader = new FileReader();
+		// 		reader.onload = function(e){
+		// 			$('#photoPreview').attr('src',e.target.result);
+		// 		}
+		// 		reader.readAsDataURL(e.target.files['0']);
+		// 	});
+		// });
+
+		$(document).ready(function(){
+			$('#photo').on('change', function(event){
+				const [file] = event.target.files;
+				if (file) {
+					$('#photoPreview')
+						.attr('src', URL.createObjectURL(file))
+						.css('display', 'block'); // Show the image preview
+				}
+			});
+		});
+	</script>
+
+
 	<!--app JS-->
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+
+	<!-- SweetAlert toast script -->
+	<script>
+		@if(session('success'))
+			Swal.fire({
+				toast: true,
+				position: 'top-end',
+				icon: 'success',
+				title: '{{ session('success') }}',
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				background: '#fff',
+				// didOpen: (toast) => {
+				// 	toast.addEventListener('mouseenter', Swal.stopTimer)
+				// 	toast.addEventListener('mouseleave', Swal.resumeTimer)
+				// }
+			});
+		@elseif(session('error'))
+			Swal.fire({
+				toast: true,
+				position: 'top-end',
+				icon: 'error',
+				title: '{{ session('error') }}',
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				background: '#fff',
+				// didOpen: (toast) => {
+				// 	toast.addEventListener('mouseenter', Swal.stopTimer)
+				// 	toast.addEventListener('mouseleave', Swal.resumeTimer)
+				// }
+			});
+		@endif
+	</script>
 	

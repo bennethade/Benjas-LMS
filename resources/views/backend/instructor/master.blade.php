@@ -10,19 +10,21 @@
 <body>
 	<!--wrapper-->
 	<div class="wrapper">
-		<!--sidebar wrapper -->
-		@include('backend.instructor.sidebar')
+		<div class="page-wrapper">
+			<!--sidebar wrapper -->
+			@include('backend.instructor.sidebar')
 
-		<!--end sidebar wrapper -->
-		<!--start header -->
-		@include('backend.instructor.header')
-		<!--end header -->
-		<!--start page wrapper -->
-        @yield('content')
-		
-		<!--end page wrapper -->
-        
-		@include('backend.section.footer')
+			<!--end sidebar wrapper -->
+			<!--start header -->
+			@include('backend.instructor.header')
+			<!--end header -->
+			<!--start page wrapper -->
+			@yield('content')
+			
+			<!--end page wrapper -->
+			
+			@include('backend.section.footer')
+		</div>
 	</div>
 	<!--end wrapper-->
 

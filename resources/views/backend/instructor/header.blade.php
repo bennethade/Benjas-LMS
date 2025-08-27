@@ -124,9 +124,9 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.profile') }}"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.setting') }}"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
                     </li>
                     <li>
                         <div class="dropdown-divider mb-0"></div>

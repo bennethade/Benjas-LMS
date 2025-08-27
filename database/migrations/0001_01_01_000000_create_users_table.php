@@ -30,7 +30,9 @@ return new class extends Migration
             $table->integer('year')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->longtext('experience')->nullable();
             $table->enum('gender',['male', 'female'])->default('male');
+            $table->date('date_of_birth')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
