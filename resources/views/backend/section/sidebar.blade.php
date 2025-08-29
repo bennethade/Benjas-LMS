@@ -11,7 +11,7 @@
         </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <li>
+        <li class="{{ setSidebar(['admin.dashboard']) }}">
             <a href="javascript:;" class="">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
@@ -19,26 +19,52 @@
             </a>
             
         </li>
-        <li>
+
+        <li class="{{ setSidebar(['admin.category*, admin.subcategory*']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Application</div>
+                <div class="menu-title">Manage Category</div>
             </a>
             <ul>
-                <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+                <li class="{{ setSidebar(['admin.category*']) }}"> 
+                    <a href="{{ route('admin.category.index') }}"><i class='bx bx-radio-circle'></i>Category</a>
                 </li>
-                <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
+                <li class="{{ setSidebar(['admin.subcategory*']) }}"> 
+                    <a href="{{ route('admin.subcategory.index') }}"><i class='bx bx-radio-circle'></i>Subcategory</a>
                 </li>
-                <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
+            </ul>
+        </li>
+        
+        <li class="{{ setSidebar(['admin.instructor.index, admin.instructor.active']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Manage Instructors</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.instructor*']) }}"> 
+                    <a href="{{ route('admin.instructor.index') }}"><i class='bx bx-radio-circle'></i>All Instructors</a>
                 </li>
-                <li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
+                <li class="{{ setSidebar(['admin.instructor.active']) }}"> 
+                    <a href="{{ route('admin.instructor.active') }}"><i class='bx bx-radio-circle'></i>Active Instructors</a>
                 </li>
-                <li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo List</a>
+            </ul>
+        </li>
+
+        <li class="{{ setSidebar(['admin.slider*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Application Setting</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.slider*']) }}"> 
+                    <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Manage Slider</a>
                 </li>
-                <li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
-                </li>
-                <li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
+
+                <li class="{{ setSidebar(['admin.info*']) }}"> 
+                    <a href="{{ route('admin.info.index') }}"><i class='bx bx-radio-circle'></i>Manage Info</a>
                 </li>
             </ul>
         </li>

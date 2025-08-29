@@ -16,19 +16,44 @@ $(function() {
 		}),
 		
 
-
-
-		$(".dark-mode").on("click", function() {
-
-			if($(".dark-mode-icon i").attr("class") == 'bx bx-sun') {
-				$(".dark-mode-icon i").attr("class", "bx bx-moon");
-				$("html").attr("class", "light-theme")
-			} else {
+		$(document).ready(function() {
+			//Page Load Theme to check local storage
+			if(localStorage.getItem("theme") === "dark") {
+				$('html').addClass('dark-theme');
 				$(".dark-mode-icon i").attr("class", "bx bx-sun");
-				$("html").attr("class", "dark-theme")
+			}else{
+				$('html').addClass('light-theme');
+				$(".dark-mode-icon i").attr("class", "bx bx-moon");
 			}
 
-		}), 
+			//Dark Mode toggle function
+			$('.dark-mode').on("click", function() {
+				if($("html").hasClass("dark-theme")){
+					$("html").removeClass("dark-theme").addClass("light-theme");
+
+					$(".dark-mode-icon i").attr("class", "bx bx-moon");
+					localStorage.setItem("theme", "light"); //Light mode save to local storage
+				}else{
+					$("html").removeClass("light-theme").addClass("dark-theme");
+					$(".dark-mode-icon i").attr("class", "bx bx-sun");
+					localStorage.setItem("theme", "dark"); //Dark mode save to local storage
+				}
+			});
+				
+		}),
+
+
+		// $(".dark-mode").on("click", function() {
+
+		// 	if($(".dark-mode-icon i").attr("class") == 'bx bx-sun') {
+		// 		$(".dark-mode-icon i").attr("class", "bx bx-moon");
+		// 		$("html").attr("class", "light-theme")
+		// 	} else {
+		// 		$(".dark-mode-icon i").attr("class", "bx bx-sun");
+		// 		$("html").attr("class", "dark-theme")
+		// 	}
+
+		// }), 
 
 		
 		$(".toggle-icon").click(function() {

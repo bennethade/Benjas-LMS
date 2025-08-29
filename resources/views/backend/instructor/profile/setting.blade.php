@@ -28,14 +28,40 @@
                         
                         <div class="col-lg-8">
                             <div class="card">
-                                <form action="">
+                                <form action="{{ route('instructor.passwordSetting') }}" method="POST">
+                                    @csrf
+
+                                    @if (session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                        
+                                    @endif
+
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                        
+                                    @endif
+                                    
+                                    {{-- @if($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif --}}
+
                                     <div class="card-body">
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Current Password</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="password" name="password" placeholder="Enter your current password" class="form-control" />
+                                                <input type="password" name="current_password" placeholder="Enter your current password" class="form-control" />
                                             </div>
                                         </div>
                                         
@@ -61,7 +87,7 @@
                                         <div class="row">
                                             <div class="col-sm-3"></div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="button" class="btn btn-primary px-4" value="Save Changes" />
+                                                <input type="submit" class="btn btn-primary px-4 w-100" value="Save Changes" />
                                             </div>
                                         </div>
                                     </div>

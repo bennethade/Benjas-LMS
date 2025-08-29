@@ -8,6 +8,10 @@
 	<link href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+	{{-- Datatable --}}
+	<link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+	{{-- <link href="{{ asset('backend/assets/plugins/datatable/css/buttons.bootstrap5.min.css') }}" rel="stylesheet"> --}}
+	
 	<!-- loader-->
 	<link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet" />
 	<script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
@@ -24,4 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}"/>
 
 	<!-- Include SweetAlert2 CSS and JS -->
-	<script rel="stylesheet" src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"></script>
+	{{-- <script rel="stylesheet" src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css"></script> --}}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
+
+	
