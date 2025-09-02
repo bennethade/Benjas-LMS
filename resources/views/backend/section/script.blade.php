@@ -85,6 +85,18 @@
 	</script>
 
 
+	{{-- Froala Editor js --}}
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+
+	<script>
+		//Initialize Froala editor with a fixed height
+		new FroalaEditor('.editor', {
+			height: 200 //Set height to 200px
+		});
+	</script>
+
+
+
 	<!--app JS-->
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
 

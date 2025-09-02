@@ -43,7 +43,7 @@
                 <div class="menu-title">Manage Instructors</div>
             </a>
             <ul>
-                <li class="{{ setSidebar(['admin.instructor*']) }}"> 
+                <li class="{{ setSidebar(['admin.instructor.index']) }}"> 
                     <a href="{{ route('admin.instructor.index') }}"><i class='bx bx-radio-circle'></i>All Instructors</a>
                 </li>
                 <li class="{{ setSidebar(['admin.instructor.active']) }}"> 

@@ -6,12 +6,12 @@
 <div class="page-content">
         
         <!--breadcrumb-->
-        @include('backend.section.breadcrumb', ['title' => 'Instructor', 'subtitle' => 'All Instructors'])
+        @include('backend.section.breadcrumb', ['title' => 'Instructor', 'subtitle' => 'Manage Instructors'])
         <!--end breadcrumb-->
         
         <div style="display: flex; align-items:center; justify-content:space-between;">
             <h6 class="mb-0 text-uppercase">All Instructors</h6>
-            <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Add Instructor</a>
+            {{-- <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Add Instructor</a> --}}
         </div>
         <hr/>
         <div class="card">
@@ -78,7 +78,7 @@
 
 @push('scripts')
     <script>
-        $('form-check-input').on('change', function() {
+        $('.form-check-input').on('change', function() {
             const userId = $(this).data('user-id');
             const status = $(this).is(':checked') ? 1 : 0;  //Get status 1:Active, 0:Inactive
             const row = $(this).closest('tr')  //Find the parent row of the checkbox

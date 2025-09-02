@@ -21,8 +21,11 @@ class AdminInstructorController extends Controller
         if($user){
             $user->status = $request->status;
             $user->save();
-            return response()->json(['success' => 'Instructor status updated successfully.']);
+
+            return response()->json(['success' => true, 'message' => 'Instructor status updated successfully.']);
         }
+
+        return response()->json(['success' =>'false', 'message' => 'User not found.'], 404);
     }
 
 
@@ -58,19 +61,12 @@ class AdminInstructorController extends Controller
         //
     }
 
-    // Update Instructor Status
-    public function updateStatus(Request $request)
-    {
-        // return $request->all();
-        $instructor = User::find($request->user_id);
-        $instructor->status = $request->status;
-        $instructor->save();
-        return response()->json(['success' => 'Instructor status updated successfully.']);
-    }
+    
 
     // Instructor Active List
-    public function instructorActiveList()
+    public function instructorActiveList(Request $request)
     {
-        return view('backend.pages.instructor.active_list');
+        $activeInstructors = User::where('role', 'instructor')->where('status', '1')->latest()->get();
+        return view('backend.admin.instructor.active', compact('activeInstructors'));
     }
 }

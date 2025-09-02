@@ -12,4 +12,14 @@ class Category extends Model
     {
         return $this->hasMany(SubCategory::class);
     }
+
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
+    
+    
+
+
+
 }

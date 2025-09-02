@@ -1,9 +1,24 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\Category;
+
+
+//Instructor Approved via Admin
+if(!function_exists('isApprovedUser')){
+    function isApprovedUser(){
+        $user_id = Auth::id();
+        return User::where('role', 'instructor')->where('status', '1')->where('id', $user_id)->first();
+    }
+}
+
+
+
 
 //Global Use in category
 
-use App\Models\Category;
 
 if(!function_exists('getCategories')){
     function getCategories() {
@@ -29,5 +44,14 @@ if(!function_exists('setSidebard')){
             }
         }
         return null;
+    }
+}
+
+
+
+//Get Course Category Globally
+if(!function_exists('getCourseCategories')){
+    function getCourseCategories(){
+        return Category::with('course', 'course.user', 'course.course_goal')->get();
     }
 }

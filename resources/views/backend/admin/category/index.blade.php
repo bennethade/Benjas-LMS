@@ -29,7 +29,7 @@
                         </thead>
 
                         <tbody>
-                            @forelse ($allCategories as $index => $item)
+                            @foreach ($allCategories as $index => $item)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $item->name }}</td>
@@ -62,11 +62,7 @@
 
                                     </td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center">No Record Found</td>
-                                </tr>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

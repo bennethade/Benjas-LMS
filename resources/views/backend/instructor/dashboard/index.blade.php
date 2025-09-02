@@ -2,6 +2,17 @@
 @section('content')
 {{-- <div class="page-wrapper"> --}}
 <div class="page-content">
+
+
+   @if (!isApprovedUser())
+      <div class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+         <div class="text-white">
+            <strong>Your account is inactive! Please contact admin for approval.</strong>
+         </div>
+      </div>
+      
+   @endif
+
    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
       <div class="col">
          <div class="card radius-10 border-start border-0 border-4 border-info">
