@@ -134,7 +134,7 @@
                                                 <h6 class="mb-0">Experience</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="text" name="experience" value="{{ auth()->user()->experience }}" class="form-control" />
+                                                <textarea name="experience"  class="form-control" rows="5">{{ auth()->user()->experience }}</textarea>
                                             </div>
                                         </div>
 
@@ -143,7 +143,7 @@
                                                 <h6 class="mb-0">Bio</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="text" name="bio" value="{{ auth()->user()->bio }}" class="form-control" />
+                                                <textarea  name="bio" class="form-control" rows="6">{{ auth()->user()->bio }}</textarea>
                                             </div>
                                         </div>
 

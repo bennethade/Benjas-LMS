@@ -23,7 +23,7 @@
                         @include('frontend.pages.course-details.course-content')
 
 
-                        @include('frontend.pages.course-details.student-bought')
+                        @include('frontend.pages.course-details.similar-courses')
                     
                     
                         @include('frontend.pages.course-details.about-instructor')

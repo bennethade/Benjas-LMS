@@ -37,13 +37,29 @@ class FrontendDashboardController extends Controller
 
         $courseContent = CourseSection::where('course_id', $course->id)->with('lecture')->get();
 
+        $data['allCategory'] = Category::orderBy('name', 'asc')->get();
+
         //Get the current authenticated user's ID
 
         $userId = Auth::id();
 
         $similarCourses = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->with('user')->get();
 
-        return view('frontend.pages.course-details.index', compact('course', 'totalLecture', 'courseContent', 'similarCourses'));
+        $data['moreCourseFromInstructor'] = Course::where('instructor_id', $course->instructor_id)->where('id', '!=', $course->id)->with('user')->get();
+
+        $data['relatedCourse'] = Course::where('subcategory_id', $course->subcategory_id)->where('id', '!=', $course->id)->take(3)->get();
+
+        $totalMinutes = CourseLecture::where('course_id', $course->id)->sum('video_duration');
+
+        $hours = floor($totalMinutes / 60);
+
+        $minutes = floor($totalMinutes % 60);
+
+        $seconds = round(($totalMinutes - floor($totalMinutes)) * 60);
+
+        $data['totalLectureDuration'] = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+
+        return view('frontend.pages.course-details.index', compact('course', 'totalLecture', 'courseContent', 'similarCourses'), $data);
     }
 
 

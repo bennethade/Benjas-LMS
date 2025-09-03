@@ -27,7 +27,7 @@ class LectureRequest extends FormRequest
             'lecture_title' => 'required|string|max:255',
             'url' => 'nullable|url|max:255',
             'content' => 'required|string',
-            // 'video_duration' => 'nullable',
+            'video_duration' => 'nullable',
         ];
     }
 }

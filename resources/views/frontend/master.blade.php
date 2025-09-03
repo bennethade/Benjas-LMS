@@ -6,7 +6,7 @@
    </head>
    <body>
       <!-- start cssload-loader -->
-      @include('frontend.section.preloader')
+      {{-- @include('frontend.section.preloader') --}}
       
       @include('frontend.section.header')
       

@@ -10,8 +10,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form method="post" action="{{ route('instructor.lecture.update', $lecture->id) }}"
-                    enctype="multipart/form-data">
+                <form method="post" action="{{ route('instructor.lecture.update', $lecture->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="course_id" value="{{ $course->id }}" />
@@ -35,11 +34,11 @@
 
                     </div>
 
-                    {{-- <div class="col-md-12 mt-3">
+                    <div class="col-md-12 mt-3">
                         <label for="video_duration" class="form-label">Video Duration</label>
 
                         <input type="number" step="0.01" class="form-control" name="video_duration" value="{{ old('video_duration', $lecture->video_duration) }}" id="video_duration"  />
-                    </div> --}}
+                    </div>
 
 
 

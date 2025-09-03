@@ -1,5 +1,5 @@
 <div class="course-overview-card pt-4">
-    <h3 class="fs-24 font-weight-semi-bold pb-4">Students also bought</h3>
+    <h3 class="fs-24 font-weight-semi-bold pb-4">Similar Courses</h3>
     <div class="view-more-carousel owl-action-styled">
         
         @forelse ($similarCourses as $course)

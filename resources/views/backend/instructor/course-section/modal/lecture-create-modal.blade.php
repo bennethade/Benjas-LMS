@@ -20,9 +20,14 @@
 
                     <div class="colo-md-12 mt-3">
                         <label for="video_url" class="form-label">Youtube Video URL</label>
-                        <input type="url" class="form-control" name="url" id="video_url" placeholder="Enter the youtube video URL" value="{{ old('url') }}" required>
+                        <input type="url" class="form-control" name="url" id="video_url" placeholder="Enter the youtube video URL" value="{{ old('url') }}">
 
                         <iframe src="" id="videoPreview" style="margin-top: 15px; display:none; width:100%; height:400px;" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="col-md-12 mt-3">
+                        <label for="video_duration" class="form-label">Video Duration</label>
+                        <input type="number" step="0.01" class="form-control" name="video_duration" value="{{ old('video_duration') }}" id="video_duration">
                     </div>
 
                     <div class="col-md-12 mt-3">
