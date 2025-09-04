@@ -11,6 +11,7 @@ use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\SliderController;
+use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\frontend\FrontendDashboardController;
 use App\Http\Controllers\ProfileController;
@@ -73,6 +74,7 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
     //Instructor Profile Routes
     Route::get('/profile', [InstructorProfileController::class, 'index'])->name('profile');
     Route::post('/profile/store', [InstructorProfileController::class, 'storeProfile'])->name('profile.store');
+    
     Route::get('/setting', [InstructorProfileController::class, 'setting'])->name('setting');
     Route::post('/password/setting', [InstructorProfileController::class, 'passwordSetting'])->name('passwordSetting');
 
@@ -93,8 +95,23 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 
 
 
+
+/////STUDENT ROUTES
+Route::middleware(['auth', 'verified', 'role:student'])->prefix('student')->name('student.')->group(function () {
+    Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [StudentController::class, 'destroy'])->name('logout');
+
+    Route::get('/profile', [ProfileController::class])->name('profile'); //Added to resolve issue
+
+    
+    
+});
+
+
+
+
 // Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
@@ -106,6 +123,8 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 Route::get('/', [FrontendDashboardController::class, 'home'])->name('frontend.home');
 
 Route::get('/course-details/{slug}', [FrontendDashboardController::class, 'viewCourse'])->name('course-details');
+
+
 
 
 
