@@ -2,8 +2,12 @@
 <html lang="en">
    <head>
       <title>Benjas Tech LMS</title>
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       @include('frontend.section.link')
+
    </head>
+
+
    <body>
       <!-- start cssload-loader -->
       {{-- @include('frontend.section.preloader') --}}
@@ -13,41 +17,7 @@
          @yield('content')
          
       
-      <!--======================================
-         START COURSE AREA
-         ======================================-->
-      {{-- @include('frontend.section.course-area-first') --}}
-      <!--======================================
-         END COURSE AREA
-         ======================================-->
-      <!--======================================
-         START COURSE AREA
-         ======================================-->
-      {{-- @include('frontend.section.course-area-second') --}}
-      <!--======================================
-         END COURSE AREA
-         ======================================-->
-      <!-- ================================
-         START FUNFACT AREA
-         ================================= -->
-      {{-- @include('frontend.section.funfact') --}}
-      <!-- ================================
-         START FUNFACT AREA
-         ================================= -->
-      <!--======================================
-         START CTA AREA
-         ======================================-->
-      {{-- @include('frontend.section.cta') --}}
-      <!--======================================
-         END CTA AREA
-         ======================================-->
-      <!--================================
-         START TESTIMONIAL AREA
-         =================================-->
-      {{-- @include('frontend.section.testimonial') --}}
-      <!--================================
-         END TESTIMONIAL AREA
-         =================================-->
+     
       <div class="section-block"></div>
       <!--======================================
          START ABOUT AREA

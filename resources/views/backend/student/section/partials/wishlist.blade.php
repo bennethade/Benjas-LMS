@@ -8,15 +8,15 @@
             <ul class="cart-dropdown-menu after-none">
 
                 @forelse($wishlist as $item)
-                    <li>
+                    <li> 
                         <div class="media media-card">
                             <a href="course-details.html" class="media-img">
                                 <img class="mr-3" src="{{ asset($item->course->course_image) }}" alt="Cart image">
 
                             </a>
                             <div class="media-body">
-                                <h5><a href="course-details.html">{{ $item->course->course_name }}</a></h5>
-                                <span class="d-block lh-18 py-1">{{ $item->course->user->name }}</span>
+                                <h5><a target="blank" href="{{ route('course-details', $item->course->course_name_slug) }}">{{ $item->course->course_name }}</a></h5>
+                                <span class="d-block lh-18 py-1">{{ $item->course->user->first_name }} {{ $item->course->user->surname }}</span>
 
 
                                 <p class="text-black font-weight-semi-bold lh-18">

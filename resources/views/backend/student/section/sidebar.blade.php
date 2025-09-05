@@ -2,7 +2,7 @@
 
     <li class="">
 
-        <a href=""><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" height="18px"
+        <a href="{{ route('student.dashboard') }}"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" height="18px"
                 viewBox="0 0 24 24" width="18px">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path
@@ -35,13 +35,13 @@
         </a>
     </li>
 
-    <li class=" ">
-        {{-- <a href="{{ route('student.wishlist.index') }}"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg"
-                height="18px" viewBox="0 0 24 24" width="18px">
+    {{-- <li class="{{ setSidebarActive(['student.wishlist.index']) }}"> --}}
+    <li class="">
+        <a href="{{ route('student.wishlist.index') }}"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" />
             </svg> Wishlist
-        </a> --}}
+        </a>
     </li>
 
 
@@ -69,12 +69,14 @@
     </li>
 
 
-    <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><svg
-                class="mr-2" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px">
+    <li>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path
                     d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
-            </svg> Logout</a>
+            </svg> Logout
+        </a>
     </li>
 
 </ul>

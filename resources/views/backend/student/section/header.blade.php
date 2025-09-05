@@ -195,13 +195,11 @@
                                                     <li class="menu-heading-block d-flex align-items-center">
                                                         <a href="teacher-detail.html"
                                                             class="avatar-sm flex-shrink-0 d-block">
-                                                            <img class="rounded-full img-fluid"
-                                                                src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('frontend/images/small-avatar-1.jpg')}}"
-                                                                alt="Avatar image">
+                                                            <img class="rounded-full img-fluid" src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('frontend/images/small-avatar-1.jpg')}}" alt="Avatar image">
                                                         </a>
                                                         <div class="ml-2">
                                                             <h4><a href="teacher-detail.html"
-                                                                    class="text-black">{{auth()->user()->name}}</a></h4>
+                                                                    class="text-black">{{auth()->user()->first_name}} {{auth()->user()->surname}}</a></h4>
                                                             <span
                                                                 class="d-block fs-14 lh-20">{{auth()->user()->email}}</span>
                                                         </div>
@@ -306,13 +304,10 @@
                                                             </li>
 
                                                             <li>
-                                                                <a href="#" class="position-relative">
+                                                                <a href="https://benjastech.com" class="position-relative">
                                                                     <span
-                                                                        class="fs-17 font-weight-semi-bold d-block">Aduca
-                                                                        for Business</span>
-                                                                    <span
-                                                                        class="lh-20 d-block fs-14 text-gray">Bring
-                                                                        learning to your company</span>
+                                                                        class="fs-17 font-weight-semi-bold d-block">Benjas Technologies</span>
+                                                                    <span class="lh-20 d-block fs-14 text-gray">Empowering Innovation</span>
                                                                     <span
                                                                         class="position-absolute top-0 right-0 mt-3 mr-3 fs-18 text-gray">
                                                                         <i class="la la-external-link"></i>

@@ -25,7 +25,7 @@ class FrontendDashboardController extends Controller
 
         // dd($courseCategory->toArray());
 
-        return view('frontend.pages.home.index', compact('allSliders', 'allInfoBox', 'allCategories','categories', 'courseCategory'));
+        return view('frontend.index', compact('allSliders', 'allInfoBox', 'allCategories','categories', 'courseCategory'));
     }
 
 

@@ -12,8 +12,10 @@ use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\StudentController;
+use App\Http\Controllers\backend\StudentProfileController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\frontend\FrontendDashboardController;
+use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -101,7 +103,18 @@ Route::middleware(['auth', 'verified', 'role:student'])->prefix('student')->name
     Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [StudentController::class, 'destroy'])->name('logout');
 
-    Route::get('/profile', [ProfileController::class])->name('profile'); //Added to resolve issue
+
+    //Student Profile Route
+    Route::get('/profile', [StudentProfileController::class, 'index'])->name('profile');
+    Route::post('/profile/store', [StudentProfileController::class, 'store'])->name('profile.store');
+    Route::post('/password/setting', [StudentProfileController::class, 'passwordSetting'])->name('passwordSetting');
+
+
+    // Wishlist Routes
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::get('/wishlist-data', [WishlistController::class, 'getWishlist']);
+    Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
 
     
     
@@ -123,6 +136,10 @@ Route::middleware(['auth', 'verified', 'role:student'])->prefix('student')->name
 Route::get('/', [FrontendDashboardController::class, 'home'])->name('frontend.home');
 
 Route::get('/course-details/{slug}', [FrontendDashboardController::class, 'viewCourse'])->name('course-details');
+
+Route::get('/wishlist/all', [WishlistController::class, 'allWishlist']);
+Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
+
 
 
 

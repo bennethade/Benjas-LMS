@@ -129,7 +129,7 @@
                     </svg>
                 </div>
                 <div class="pl-4">
-                    <p class="card-text fs-18">Total Purchase Amount</p>
+                    <p class="card-text fs-18">Purchase Amount</p>
                     <h5 class="card-title pt-2 fs-26">1000</h5>
                 </div>
             </div><!-- end card-body -->

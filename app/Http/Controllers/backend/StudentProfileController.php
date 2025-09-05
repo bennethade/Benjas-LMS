@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Services\PasswordUpdateService;
 use App\Services\ProfileService;
+use Illuminate\Http\Request;
 
-class AdminProfileController extends Controller
+class StudentProfileController extends Controller
 {
     protected $profileService, $passwordUpdateService;
 
@@ -20,31 +19,23 @@ class AdminProfileController extends Controller
         $this->passwordUpdateService = $passwordUpdateService;
     }   
 
+
+
     public function index()
     {
-        return view('backend.admin.profile.index');
+        return view('backend.student.profile.index');
     }
 
-    public function storeProfile(ProfileRequest $request)
+    public function store(ProfileRequest $request)
     {
         //Pass data and files to the service
         $this->profileService->saveProfile($request->validated(), $request->file('photo'));
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
-    public function setting()
-    {
-        return view('backend.admin.profile.setting');
-    }
-
 
     public function passwordSetting(PasswordUpdateRequest $request)
     {
-         //Pass data and files to the service
-        // $this->passwordUpdateService->updatePassword($request->validated());
-        // return redirect()->back()->with('success', 'Password updated successfully!');
-    
-
         $success = $this->passwordUpdateService->updatePassword($request->validated());
 
         if (!$success) {
@@ -55,6 +46,5 @@ class AdminProfileController extends Controller
     }
 
 
-    
 
 }

@@ -22,6 +22,7 @@ class ProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'nullable|string',
             'first_name' => 'required|string|max:50',
             'middle_name' => 'nullable|string|max:50',
             'surname' => 'nullable|string|max:50',
