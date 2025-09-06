@@ -10,17 +10,17 @@
             @foreach($cart as $item)
                 <li class="media media-card">
                     <a href="course-details.html" class="media-img">
-                        <img src="{{ $item->course->course_image }}" alt="{{ $item->course->course_title }}">
+                        <img src="{{ asset($item->course->course_image) }}" alt="{{ $item->course->course_title }}">
                     </a>
                     <div class="media-body">
                         <h5>
                             <a href="course-details.html">{{ $item->course->course_title }}</a>
                         </h5>
-                        <span class="d-block lh-18 py-1">{{ $item->course->user->name }}</span>
+                        <span class="d-block lh-18 py-1">{{ $item->course->user->first_name }} {{ $item->course->user->surname }}</span>
                         <p class="text-black font-weight-semi-bold lh-18">
-                            ${{ number_format($item->course->discount_price, 2) }}
+                            N{{ number_format($item->course->discount_price, 2) }}
                             @if($item->course->selling_price > $item->course->discount_price)
-                                <span class="before-price fs-14">${{ number_format($item->course->selling_price, 2) }}</span>
+                                <span class="before-price fs-14">N{{ number_format($item->course->selling_price, 2) }}</span>
                             @endif
                         </p>
                     </div>
@@ -29,7 +29,7 @@
 
             <li class="media media-card">
                 <div class="media-body fs-16">
-                    <p class="text-black font-weight-semi-bold lh-18">Total: <span class="cart-total">${{$subTotal}}</span></p>
+                    <p class="text-black font-weight-semi-bold lh-18">Total: <span class="cart-total">N{{$subTotal}}</span></p>
                 </div>
             </li>
 

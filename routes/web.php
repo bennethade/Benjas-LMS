@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminInstructorController;
+use App\Http\Controllers\backend\CartController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CourseSectionController;
@@ -137,8 +138,18 @@ Route::get('/', [FrontendDashboardController::class, 'home'])->name('frontend.ho
 
 Route::get('/course-details/{slug}', [FrontendDashboardController::class, 'viewCourse'])->name('course-details');
 
+
+//Wishlist Routes
 Route::get('/wishlist/all', [WishlistController::class, 'allWishlist']);
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
+
+
+
+// Cart Routes
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/all', [CartController::class, 'allCart'])->name('cart.all');
+
 
 
 

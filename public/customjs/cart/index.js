@@ -76,12 +76,12 @@ function getCart(){
 
             _token: $('meta[name="csrf-token"]').attr('content')
 
-
         },
+
         success: function (response) {
 
              if (response.status === 'success') {
-                // #wishlist-course ডিভে HTML আপডেট করা
+                // #wishlist-course 
                 $('#cart').html(response.html);
             }
 

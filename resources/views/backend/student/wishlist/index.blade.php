@@ -27,5 +27,7 @@
 
 
 @push('scripts')
-    <script src="{{ asset('customjs/student/wishlist.js') }}"></script>
+    <!-- Script inclusion -->
+    <script src="{{asset('customjs/student/wishlist.js')}}"></script>
+    <script src="{{asset('customjs/cart/index.js')}}"></script>
 @endpush
