@@ -36,7 +36,7 @@
          ======================================-->
       <div class="section-block"></div>
       <!-- ================================
-         START CLIENT-LOGO AREA
+         START CLIENT-LOGO AREA-->
         
 
       @include('frontend.section.footer')

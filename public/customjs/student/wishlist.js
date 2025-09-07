@@ -36,7 +36,7 @@ $(document).ready(function () {
                             <div class="card card-item">
                                 <div class="card-image">
                                     <a target="blank" href="/course-details/${item.course.course_name_slug}" class="d-block">
-                                        <img class="card-img-top" src="${item.course.course_image}" alt="Card image cap" width="280" height="200">
+                                        <img class="card-img-top" src="${item.course.course_image}" alt="Card image cap" width="250" height="170">
                                     </a>
                                     <div class="course-badge-labels">
                                         <div class="course-badge">${getBadge(item.course)}</div>

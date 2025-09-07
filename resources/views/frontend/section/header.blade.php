@@ -43,34 +43,29 @@ $categories = getCategories();
                             </button>
                         </div>
 
-                        @if (!auth()->user())
-                            <ul
-                                class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
-                                <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i
-                                        class="la la-sign-in mr-1"></i><a href="{{ route('login') }}"> Login</a></li>
-                                <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a
-                                        href="{{ route('register') }}"> Register</a></li>
+                       @if (!auth()->user())
+                            <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
+                                
+                                <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href="{{ route('login') }}"> Login</a></li>
+
+                                <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a href="{{ route('register') }}"> Register</a></li>
                             </ul>
                         @else
-                            <ul
-                                class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
-                                <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i
-                                        class="la la-sign-in mr-1"></i>
+                            <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
+                                {{-- <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href=""> </a></li> --}}
 
-                                    @if (auth()->user()->role == 'student')
-                                        <a href="{{ route('student.dashboard') }}">Dashboard</a>
-                                    @endif
+                                @if (auth()->user()->role == 'student')
+                                    <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href="{{ route('student.dashboard') }}"> Dashboard</a></li>
+                                @endif
 
-                                    @if (auth()->user()->role == 'admin')
-                                        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-                                    @endif
+                                @if (auth()->user()->role == 'instructor')
+                                    <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href="{{ route('instructor.dashboard') }}"> Dashboard</a></li>
+                                @endif
 
-                                    @if (auth()->user()->role == 'instructor')
-                                        <a href="{{ route('instructor.dashboard') }}">Dashboard</a>
-                                    @endif
-                                </li>
-
-                            </ul>
+                                @if (auth()->user()->role == 'admin')
+                                    <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href="{{ route('admin.dashboard') }}"> Dashboard</a></li>
+                                @endif
+                            </ul>                            
                         @endif
 
 
@@ -89,7 +84,7 @@ $categories = getCategories();
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="/" class="logo"><img src="{{ asset('frontend/images/logo.png') }}" alt="logo" width="50%" height="20%"></a>
+                            <a href="{{ route('frontend.home') }}" class="logo"><img src="{{asset('frontend/images/logo.png')}}" width="100px" height="auto" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2"
                                     data-toggle="tooltip" data-placement="top" title="Search">
@@ -114,17 +109,17 @@ $categories = getCategories();
                                         <a href="#">Categories <i class="la la-angle-down fs-12"></i></a>
                                         <ul class="cat-dropdown-menu">
 
-                                            @foreach ($categories as $item)
-                                                <li>
-                                                    <a href="course-grid.html">{{ $item->name }} <i class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        @forelse ($item['subcategories'] as $data)
-                                                            <li><a href="#">{{ $data->name }}</a></li>
-                                                        @empty
-                                                            <li><small style="margin-left: 10px;">No Subcategory Found</small></li>
-                                                        @endforelse
-                                                    </ul>
-                                                </li>
+                                            @foreach($categories as $item)
+                                            <li>
+                                                <a href="course-grid.html">{{$item->name}} <i
+                                                        class="la la-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    @foreach ($item['subcategories'] as $data)
+                                                    <li><a href="#">{{$data->name}}</a></li>
+                                                    @endforeach
+
+                                                </ul>
+                                            </li>
                                             @endforeach
 
 
@@ -147,7 +142,7 @@ $categories = getCategories();
 
                                     </li>
                                     <li>
-                                        <a href="#"">All Courses </a>
+                                        <a href="#">All Courses </a>
 
                                     </li>
                                     <li>
@@ -256,7 +251,7 @@ $categories = getCategories();
 
             </li>
             <li>
-                <a href=""">All Courses</a>
+                <a href="">All Courses</a>
 
             </li>
             <li>

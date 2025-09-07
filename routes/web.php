@@ -148,8 +148,10 @@ Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
 // Cart Routes
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-Route::post('/cart/all', [CartController::class, 'allCart'])->name('cart.all');
+Route::get('/cart/all', [CartController::class, 'allCart'])->name('cart.all');
 
+Route::get('/fetch/cart', [CartController::class, 'fetchCart']);
+Route::post('/remove/cart', [CartController::class, 'removeCart']);
 
 
 
