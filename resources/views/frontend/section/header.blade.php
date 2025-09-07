@@ -212,18 +212,6 @@ $categories = getCategories();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                         </div><!-- end menu-wrapper -->
                     </div><!-- end col-lg-10 -->
                 </div><!-- end row -->
@@ -243,7 +231,7 @@ $categories = getCategories();
 
             </li>
             <li>
-                <a href="#">cart</a>
+                <a href="{{ route('cart.all') }}">cart</a>
 
             </li>
             <li>

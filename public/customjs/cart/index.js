@@ -125,7 +125,7 @@ $(document).ready(function () {
             success: function (response) {
 
                 if (response.status === 'success') {
-                    // #wishlist-course ডিভে HTML আপডেট করা
+                    // #wishlist-course 
                     $('#cart-main-content').html(response.html);
                 }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AdminInstructorController;
 use App\Http\Controllers\backend\CartController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\CouponController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CourseSectionController;
 use App\Http\Controllers\backend\InfoController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\StudentProfileController;
 use App\Http\Controllers\backend\SubcategoryController;
+use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\FrontendDashboardController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
@@ -92,6 +94,10 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
     //Manage Lectures
     Route::resource('/lecture', LectureController::class);
 
+    //Coupon Route
+    Route::resource('/coupon', CouponController::class);
+
+
     
 });
 
@@ -152,6 +158,13 @@ Route::get('/cart/all', [CartController::class, 'allCart'])->name('cart.all');
 
 Route::get('/fetch/cart', [CartController::class, 'fetchCart']);
 Route::post('/remove/cart', [CartController::class, 'removeCart']);
+
+
+//Checkout Routes
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+
+/* Coupon Apply    */
+Route::post('/apply-coupon', [CouponController::class, 'applyCoupon']);
 
 
 

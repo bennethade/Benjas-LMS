@@ -39,9 +39,7 @@ class FrontendDashboardController extends Controller
 
         $data['allCategory'] = Category::orderBy('name', 'asc')->get();
 
-        //Get the current authenticated user's ID
-
-        $userId = Auth::id();
+        $userId = Auth::id();   //Get the current authenticated user's ID
 
         $similarCourses = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->with('user')->get();
 
