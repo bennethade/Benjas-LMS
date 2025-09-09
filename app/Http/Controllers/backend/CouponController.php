@@ -122,4 +122,33 @@ class CouponController extends Controller
             'discounts' => $discounts,
         ]);
     }
+
+
+    public function applyCheckoutCoupon(ApplyCouponRequest $request)
+    {
+
+        // Validate the input
+        $validated = $request->validated();
+
+        $couponName = $validated['coupon'];
+        $courseIds = $validated['course_id'];
+        $instructorIds = $validated['instructor_id'];
+
+        $discounts =  $this->applyCouponService->applyCoupon($couponName, $courseIds, $instructorIds);
+
+        // If no valid coupon found
+        if (empty($discounts)) {
+            return redirect()->back()->with('error', 'Invalid Coupon!!!');
+        }
+
+        // Calculate total discount
+        $totalDiscount = collect($discounts)->sum('discount');
+
+        // Store total discount in session
+        session(['coupon' => $totalDiscount]);
+
+
+        // Success response
+        return redirect()->back()->with('success', 'Coupon Applied Successfully');
+    }
 }

@@ -13,7 +13,7 @@
                    START CONTACT AREA
             ================================= -->
     {{-- <form id="payment-form" method="post" action="{{ route('order') }}"> --}}
-    <form id="payment-form" method="post" action="">
+    <form id="payment-form" method="post" action="{{ route('order') }}">
         @csrf
 
         <section class="cart-area section--padding">
@@ -111,11 +111,7 @@
                                             <input id="stripe" name="payment_type" type="radio" value="stripe">
                                             <label for="stripe">Stripe</label>
 
-                                            <img class="payment-logo" src="{{ asset('frontend/images/stripe.png') }}"
-                                                alt="">
-
-
-
+                                            <img class="payment-logo" src="{{ asset('frontend/images/stripe.png') }}" alt="">
 
 
                                         </div>
@@ -132,9 +128,9 @@
                                         <div class="payment-tab-toggle">
                                             <input id="paypal" name="payment_type" type="radio" value="paypal">
                                             <label for="paypal">PayPal</label>
-                                            <img class="payment-logo" src="{{ asset('frontend/images/paypal.png') }}"
-                                                alt="">
+                                            <img class="payment-logo" src="{{ asset('frontend/images/paypal.png') }}" alt="">
                                         </div>
+
                                         <div class="payment-tab-content">
                                             <p class="fs-15 lh-24">In order to complete your transaction, we will transfer
                                                 you over to PayPal's secure servers.</p>
@@ -147,7 +143,7 @@
                                         <div class="payment-tab-toggle">
                                             <input type="radio" name="radio" id="creditCart" value="creditCard">
                                             <label for="creditCart">Credit / Debit Card</label>
-                                            <img class="payment-logo" src="images/payment-img.png" alt="">
+                                            <img class="payment-logo" src="{{ asset('frontend/images/payment-img.png') }}" alt="">
                                         </div>
                                         <div class="payment-tab-content">
                                             <form action="#" class="row">
@@ -235,6 +231,37 @@
                             <div class="card-body">
                                 <h3 class="card-title fs-22 pb-3">Order Summary</h3>
                                 <div class="divider"><span></span></div>
+
+
+
+
+                                <div class="d-flex flex-wrap align-items-center justify-content-between pb-3">
+                                    <form id="couponForm" method="POST" action="{{ route('checkout.coupon') }}">
+                                        @csrf
+                                        @foreach ($cart as $item)
+                                            <input type="hidden" name="course_id[]" value="{{ $item->course->id }}">
+                                            <input type="hidden" name="instructor_id[]" value="{{ $item->course->user->id }}">
+                                        @endforeach
+
+                                        @if (!session()->get('coupon'))
+                                            <div class="input-group mb-2">
+                                                <input class="form-control form--control pl-3" type="text" name="coupon"
+                                                    id="couponInput" placeholder="Enter Coupon Code">
+                                                <div class="input-group-append">
+                                                    <button type="submit" id="applyCouponBtn" class="btn theme-btn">Apply Code</button>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </form>
+                                    <a href="#" class="btn theme-btn mb-2 sr-only">Update Cart</a>
+                                </div>
+
+
+
+
+
+
+
                                 <ul class="generic-list-item generic-list-item-flash fs-15">
                                     <li class="d-flex align-items-center justify-content-between font-weight-semi-bold">
                                         <span class="text-black">Original price:</span>
@@ -253,19 +280,15 @@
                                     <li class="d-flex align-items-center justify-content-between font-weight-bold">
                                         <span class="text-black">Total:</span>
                                         <span>N{{ $total - session()->get('coupon') }}</span>
-                                        <input type="hidden" name="total_price"
-                                            value="{{ $total - session()->get('coupon') }}" />
+                                        <input type="hidden" name="total_price" value="{{ $total - session()->get('coupon') }}" />
                                     </li>
                                 </ul>
                                 <div class="btn-box border-top border-top-gray pt-3">
-                                    <p class="fs-14 lh-22 mb-2">Aduca is required by law to collect applicable transaction
-                                        taxes for purchases made in certain tax jurisdictions.
+                                    <p class="fs-14 lh-22 mb-2">Aduca is required by law to collect applicable transaction taxes for purchases made in certain tax jurisdictions.
                                     </p>
-                                    <p class="fs-14 lh-22 mb-3">By completing your purchase you agree to these <a
-                                            href="#" class="text-color hover-underline">Terms of Service.</a>
+                                    <p class="fs-14 lh-22 mb-3">By completing your purchase you agree to these <a href="#" class="text-color hover-underline">Terms of Service.</a>
                                     </p>
-                                    <button type="submit" class="btn theme-btn w-100">Proceed <i
-                                            class="la la-arrow-right icon ml-1"></i></button>
+                                    <button type="submit" class="btn theme-btn w-100">Proceed <i class="la la-arrow-right icon ml-1"></i></button>
                                 </div>
                             </div><!-- end card-body -->
                         </div><!-- end card -->

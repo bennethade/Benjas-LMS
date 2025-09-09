@@ -68,6 +68,27 @@
                 </li>
             </ul>
         </li>
+
+        <li class="{{ setSidebar(['admin.slider*']) }}">
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Configuration Setting</div>
+            </a>
+            <ul>
+                <li class="{{ setSidebar(['admin.slider*']) }}"> 
+                    <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Mail Setting</a>
+                </li>
+
+                <li class="{{ setSidebar(['admin.stripe.setting']) }}"> 
+                    <a href="{{ route('admin.stripe.setting') }}"><i class='bx bx-radio-circle'></i>Stripe Setting</a>
+                </li>
+
+                <li class="{{ setSidebar(['admin.info*']) }}"> 
+                    <a href="{{ route('admin.info.index') }}"><i class='bx bx-radio-circle'></i>Google Setting</a>
+                </li>
+            </ul>
+        </li>
         
     </ul>
     <!--end navigation-->

@@ -119,7 +119,7 @@
                                 class="d-flex align-items-center justify-content-between font-weight-semi-bold">
                                 <span class="text-black">Total Discount:</span>
                                 <span id="totalDiscount">
-                                    N{{ session()->get('coupon') ?? '0.00' }}
+                                    -N{{ session()->get('coupon') ?? '0.00' }}
                                 </span>
                             </li>
                         @endif

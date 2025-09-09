@@ -12,12 +12,14 @@ use App\Http\Controllers\backend\InfoController;
 use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
+use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\StudentProfileController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\FrontendDashboardController;
+use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +64,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('/instructor', AdminInstructorController::class);
     Route::post('/update-status', [AdminInstructorController::class, 'updateStatus'])->name('instructor.status');
     Route::get('/instructor-active-list', [AdminInstructorController::class, 'instructorActiveList'])->name('instructor.active');
+
+
+    //Setting Routes
+    Route::get('/stripe-setting', [SettingController::class, 'stripeSetting'])->name('stripe.setting');
+    Route::post('/stripe-setting/update', [SettingController::class, 'updateStripeSettings'])->name('stripe.settings.update');
 
     
 });
@@ -165,6 +172,20 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.in
 
 /* Coupon Apply    */
 Route::post('/apply-coupon', [CouponController::class, 'applyCoupon']);
+
+//Checkout Coupon
+Route::post('/apply-checkout-coupon', [CouponController::class, 'applyCheckoutCoupon'])->name('checkout.coupon');
+
+
+
+//Protected Auth Route
+Route::middleware('auth')->group(function (){
+    
+    //Order Routes
+    Route::post('order', [OrderController::class, 'order'])->name('order');
+    Route::get('payment-success', [OrderController::class, 'success'])->name('success');
+    Route::get('payment-cancel', [OrderController::class, 'cancel'])->name('cancel');
+});
 
 
 
