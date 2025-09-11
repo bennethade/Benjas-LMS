@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\InfoController;
 use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
+use App\Http\Controllers\backend\PartnerController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\SocialController;
@@ -73,6 +74,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
 
 
     //Setting Routes
+    Route::get('/mail-setting', [SettingController::class, 'mailSetting'])->name('mail.setting');
+    Route::post('/mail-setting/update', [SettingController::class, 'updateMailSettings'])->name('mail.settings.update');
+
+
     Route::get('/stripe-setting', [SettingController::class, 'stripeSetting'])->name('stripe.setting');
     Route::post('/stripe-setting/update', [SettingController::class, 'updateStripeSettings'])->name('stripe.settings.update');
 
@@ -88,6 +93,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
 
     //Order Routes
     Route::resource('order', BackendOrderController::class);
+
+
+    //Partner Routes
+    Route::resource('partner', PartnerController::class);
+
 
     
 });

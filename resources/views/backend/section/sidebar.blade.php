@@ -93,6 +93,10 @@
                 <li class="{{ setSidebar(['admin.info*']) }}"> 
                     <a href="{{ route('admin.info.index') }}"><i class='bx bx-radio-circle'></i>Manage Info</a>
                 </li>
+
+                <li class="{{ setSidebar(['admin.partner*']) }}"> 
+                    <a href="{{ route('admin.partner.index') }}"><i class='bx bx-radio-circle'></i>Manage Partner</a>
+                </li>
             </ul>
         </li>
 
@@ -103,15 +107,15 @@
                 <div class="menu-title">Config Settings</div>
             </a>
             <ul>
-                <li class="{{ setSidebar(['admin.slider*']) }}"> 
-                    <a href="{{ route('admin.slider.index') }}"><i class='bx bx-radio-circle'></i>Mail Setting</a>
+                <li class="{{ setSidebar(['admin.mail.setting']) }}"> 
+                    <a href="{{ route('admin.mail.setting') }}"><i class='bx bx-radio-circle'></i>Mail Setting</a>
                 </li>
 
                 <li class="{{ setSidebar(['admin.stripe.setting']) }}"> 
                     <a href="{{ route('admin.stripe.setting') }}"><i class='bx bx-radio-circle'></i>Stripe Setting</a>
                 </li>
 
-                <li class="{{ setSidebar(['admin.google.setting*']) }}"> 
+                <li class="{{ setSidebar(['admin.google.setting']) }}"> 
                     <a href="{{ route('admin.google.setting') }}"><i class='bx bx-radio-circle'></i>Google Setting</a>
                 </li>
             </ul>

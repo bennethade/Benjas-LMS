@@ -28,27 +28,24 @@
                     <div style="display: flex; align-items:center; justify-content:space-between">
                         <h5 class="mb-4">Configure SMTP (Mail)</h5>
 
-
-
-
                     </div>
 
                     <form class="row g-3" method="post" action="{{ route('admin.mail.settings.update') }}">
                         @csrf
-                        @method('PUT')
+                        {{-- @method('PUT') --}}
 
                          <!-- Validation Error Message -->
-                         @if ($errors->any())
-                         <div class="alert alert-danger">
-                             <strong>Whoops! Something went wrong.</strong>
-                             <ul>
-                                 @foreach ($errors->all() as $error)
-                                     <li>{{ $error }}</li>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Whoops! Something went wrong.</strong>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
 
-                                 @endforeach
-                             </ul>
-                         </div>
-                     @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         <div class="col-md-6">
                             <label for="mail" class="form-label">Mail Mailer</label>

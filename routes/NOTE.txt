@@ -28,3 +28,5 @@ To set up 'login with google':
 
     Make a GoogleServiceProvider
         php artisan make:provider GoogleServiceProvider 
+        
+    Setup the routes
