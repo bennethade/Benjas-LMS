@@ -4,7 +4,7 @@
     <div class="page-content">
 
         <!--breadcrumb-->
-        @include('backend.section.breadcrumb', ['title'=> 'Setting', 'sub_title'=> 'Google-Setting'])
+        @include('backend.section.breadcrumb', ['title'=> 'Setting', 'subtitle'=> 'Google-Setting'])
         <!--end breadcrumb-->
 
 
@@ -38,14 +38,14 @@
                         @endif
 
                         <div class="col-md-12">
-                            <label for="client_id" class="form-label">GOOGLE_CLIENT_ID</label>
+                            <label for="client_id" class="form-label">GOOGLE CLIENT ID</label>
                             <input type="text" class="form-control" name="client_id" id="client_id"
                                 placeholder="Enter google client id"
                                 value="{{ old('client_id', $google->client_id ?? '') }}" required>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="secret_key" class="form-label">GOOGLE_CLIENT_SECRET</label>
+                            <label for="secret_key" class="form-label">GOOGLE CLIENT SECRET KEY</label>
                             <input type="text" class="form-control" name="secret_key" id="secret_key"
                                 placeholder="Enter google secret key"
                                 value="{{ old('secret_key', $google->secret_key ?? '') }}" required>

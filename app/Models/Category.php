@@ -15,7 +15,7 @@ class Category extends Model
 
     public function course()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class)->where('status', '1');
     }
     
     

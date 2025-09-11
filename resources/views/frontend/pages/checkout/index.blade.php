@@ -209,6 +209,8 @@
                                             <input type="hidden" name="course_image[]" value="{{ $item->course->course_image }}" />
                                             <input type="hidden" name="course_price[]" value="{{ $item->course->discount_price ? $item->course->discount_price : $item->course->selling_price }}" />
                                             <input type="hidden" name="instructor_id[]" value="{{$item->course->instructor_id}}" />
+
+                                            
                                             <div class="media-body">
                                                 <h5 class="fs-15 pb-2"><a
                                                         href="{{ route('course-details', $item->course->course_name_slug) }}">{{ $item->course->course_name_slug }}</a>
@@ -253,7 +255,7 @@
                                             </div>
                                         @endif
                                     </form>
-                                    <a href="#" class="btn theme-btn mb-2 sr-only">Update Cart</a>
+                                    {{-- <a href="#" class="btn theme-btn mb-2 sr-only">Update Cart</a> --}}
                                 </div>
 
 

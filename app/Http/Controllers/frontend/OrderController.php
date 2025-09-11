@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Stripe\StripeClient;
 use Illuminate\Support\Str;
 
@@ -30,7 +31,7 @@ class OrderController extends Controller
         return $this->paymentService->processPayment($request->validated());
     }
 
-     public function success(Request $request)
+    public function success(Request $request)
     {
         // Get the session ID from the query string
         $sessionId = $request->query('session_id');
@@ -62,7 +63,7 @@ class OrderController extends Controller
             //coupon session destroy
             session()->forget('coupon','stripe_data');
 
-            return redirect('/')->with('success', 'Course purchase successfully');
+            return redirect('/')->with('success', 'Course purchased successfully!!!');
 
 
             // return view('frontend.pages.checkout.stripe.success', ['session' => $session]);
@@ -82,7 +83,7 @@ class OrderController extends Controller
     private function createPayment($session, $paymentIntent)
     {
 
-        // Create payment record using metadata from Stripe
+        // Create payment record using metadata from Stripe and insert into the payments table
         $payment = Payment::create([
             'transaction_id' => $paymentIntent->id,
             'name' => $session->customer_details->name, // Use customer details for name
@@ -106,19 +107,21 @@ class OrderController extends Controller
 
     }
 
-    private function createOrder($paymentId){
 
-         // Retrieve the validated data from the session or request
-         $stripeData = session('stripe_data'); // Assuming this is where the order data is stored.
-         // Create order records for each course
-         foreach ($stripeData['course_id'] as $index => $courseId) {
-             Order::create([
-                 'payment_id' => $paymentId, // Associate with the created payment record
-                 'user_id' => auth()->user()->id, // Assuming user is authenticated
-                 'course_id' => $courseId,
-                 'instructor_id' => $stripeData['instructor_id'][$index], // Add logic to retrieve instructor ID if needed
-                 'course_title' => $stripeData['course_name'][$index],
-                 'price' => $stripeData['course_price'][$index],
+    private function createOrder($paymentId)
+    {
+
+        // Retrieve the validated data from the session or request
+        $stripeData = session('stripe_data'); // Assuming this is where the order data is stored.
+        // Create order records for each course
+        foreach ($stripeData['course_id'] as $index => $courseId) {
+            Order::create([
+                'payment_id' => $paymentId, // Associate with the created payment record
+                'user_id' => Auth::user()->id, // Assuming user is authenticated
+                'course_id' => $courseId,
+                'instructor_id' => $stripeData['instructor_id'][$index], // Add logic to retrieve instructor ID if needed
+                'course_title' => $stripeData['course_name'][$index],
+                'price' => $stripeData['course_price'][$index],
              ]);
          }
 

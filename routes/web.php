@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\AdminCourseController;
 use App\Http\Controllers\backend\AdminInstructorController;
+use App\Http\Controllers\backend\BackendOrderController;
 use App\Http\Controllers\backend\CartController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CouponController;
@@ -14,6 +16,7 @@ use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\SliderController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\StudentProfileController;
 use App\Http\Controllers\backend\SubcategoryController;
@@ -28,9 +31,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('auth/google', [SocialController::class, 'googleLogin'])->name('auth.google');
+Route::get('auth/google-callback', [SocialController::class, 'googleAuthentication'])->name('auth.google-callback');
 
 
 
@@ -69,6 +75,19 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     //Setting Routes
     Route::get('/stripe-setting', [SettingController::class, 'stripeSetting'])->name('stripe.setting');
     Route::post('/stripe-setting/update', [SettingController::class, 'updateStripeSettings'])->name('stripe.settings.update');
+
+
+    Route::get('/google-setting', [SettingController::class, 'googleSetting'])->name('google.setting');
+    Route::post('/google-setting/update', [SettingController::class, 'updateGoogleSettings'])->name('google.settings.update');
+
+
+    //Control Course
+    Route::resource('course', AdminCourseController::class);
+    Route::post('course-status', [AdminCourseController::class, 'courseStatus'])->name('course.status');
+    
+
+    //Order Routes
+    Route::resource('order', BackendOrderController::class);
 
     
 });
