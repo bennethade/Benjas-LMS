@@ -16,6 +16,8 @@ use App\Http\Controllers\backend\InstructorProfileController;
 use App\Http\Controllers\backend\LectureController;
 use App\Http\Controllers\backend\PartnerController;
 use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\backend\SiteController;
+use App\Http\Controllers\backend\SiteSettingController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\backend\StudentController;
@@ -65,6 +67,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
 
     //Manage Info Routes
     Route::resource('/info', InfoController::class);
+
+    //Site Setting Route
+    Route::resource('/site-setting', SiteSettingController::class);
 
 
     //Control Instructor Routes

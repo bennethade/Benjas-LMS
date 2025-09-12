@@ -12,7 +12,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li class="{{ setSidebar(['admin.dashboard']) }}">
-            <a href="javascript:;" class="">
+            <a href="{{ route('admin.dashboard') }}" class="">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -96,6 +96,10 @@
 
                 <li class="{{ setSidebar(['admin.partner*']) }}"> 
                     <a href="{{ route('admin.partner.index') }}"><i class='bx bx-radio-circle'></i>Manage Partner</a>
+                </li>
+
+                <li class="{{ setSidebar(['admin.site-setting*']) }}"> 
+                    <a href="{{ route('admin.site-setting.index') }}"><i class='bx bx-radio-circle'></i>Site Setting</a>
                 </li>
             </ul>
         </li>
